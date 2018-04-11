@@ -18,7 +18,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -34,7 +33,7 @@ public class MoneyExceptionHandler extends ResponseEntityExceptionHandler {
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
 
 		String userMessage = messageSource.getMessage("mensagem.invalida", null,LocaleContextHolder.getLocale());
-		String devMessage = ex.getCause().toString();
+		String devMessage = ex.getCause() != null ? ex.getCause().toString() : ex.toString();
 		
 		List<Erro> erros = Arrays.asList(new Erro (userMessage, devMessage));
 		return handleExceptionInternal(ex, erros  , headers, HttpStatus.BAD_REQUEST, request);

@@ -53,8 +53,20 @@
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
-		</dependency>		
+		</dependency>	
 		
+		<!-- Hibernate Java 8 Suporte -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-java8</artifactId>
+		</dependency>	
+		
+		<!-- Jackson Java 8 Suporte Datas-->
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+		</dependency>	
+				
 	</dependencies>
 
 	<build>
