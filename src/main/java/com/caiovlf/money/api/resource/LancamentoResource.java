@@ -26,6 +26,7 @@ import com.caiovlf.money.api.event.RecursoCriadoEvent;
 import com.caiovlf.money.api.exceptionhandler.MoneyExceptionHandler.Erro;
 import com.caiovlf.money.api.model.Lancamento;
 import com.caiovlf.money.api.repository.LancamentoRepository;
+import com.caiovlf.money.api.repository.filter.LancamentoFilter;
 import com.caiovlf.money.api.service.LancamentoService;
 import com.caiovlf.money.api.service.exception.PessoaInexistenteOuInativaException;
 
@@ -46,8 +47,8 @@ public class LancamentoResource {
 	private LancamentoService lancamentoService;
 	
 	@GetMapping
-	public List<Lancamento> listar(){
-		return lancamentoRepository.findAll();
+	public List<Lancamento> pesquisar(LancamentoFilter lancamentoFilter){
+		return lancamentoRepository.filtrar(lancamentoFilter);
 	}
 	
 	@GetMapping("/{codigo}")
